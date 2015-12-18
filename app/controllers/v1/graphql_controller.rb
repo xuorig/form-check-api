@@ -9,5 +9,10 @@ module V1
       result = FormCheckSchema.execute(query_string, variables: query_variables)
       render json: result
     end
+
+    def introspection
+      introspection = FormCheckSchema.execute(GraphQL::Introspection::INTROSPECTION_QUERY)
+      render json: introspection
+    end
   end
 end

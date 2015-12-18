@@ -1,1 +1,1 @@
-StarWarsSchema = GraphQL::Schema.new(query: QueryType )
+FormCheckSchema = GraphQL::Schema.new(query: QueryType )
