@@ -6,7 +6,13 @@ module V1
     def create
       query_string = params[:query]
       query_variables = params[:variables] || {}
-      result = FormCheckSchema.execute(query_string, variables: query_variables)
+      result = FormCheckSchema.execute(
+        query_string,
+        variables: query_variables,
+        context: {},
+        debug: true
+      )
+      puts result
       render json: result
     end
 
