@@ -13,4 +13,12 @@ FormCheckType = GraphQL::ObjectType.define do
 
   field :title, types.String
   field :description, types.String
+
+  connection :comments, CommentType.connection_type do
+    resolve -> (obj, args, ctx) {
+      obj.comments
+    }
+  end
+
+  field :user, UserType
 end
