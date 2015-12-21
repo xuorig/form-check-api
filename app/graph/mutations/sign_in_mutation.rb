@@ -10,7 +10,6 @@ SignInMutation = GraphQL::Relay::Mutation.define do
     return {access_token: nil} unless @user
 
     if @user.valid_password?(args[:password])
-      sign_in :user, @user
       return {access_token: @user.access_token}
     else
       {access_token: nil}
