@@ -1,5 +1,6 @@
 module V1
   class GraphqlController < ApplicationController
+    before_action :authenticate_user_from_token!
     def new
     end
 
@@ -9,7 +10,7 @@ module V1
       result = FormCheckSchema.execute(
         query_string,
         variables: query_variables,
-        context: {},
+        context: {current_user: current_user},
         debug: true
       )
       puts result
