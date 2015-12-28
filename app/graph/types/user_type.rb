@@ -18,4 +18,18 @@ UserType = GraphQL::ObjectType.define do
       obj.form_checks
     }
   end
+
+  connection :memberships do
+    type -> { TeamType.connection_type  }
+    resolve -> (obj, args, ctx) {
+      obj.memberships
+    }
+  end
+
+  field :presigned_s3_post do
+    type PresignedPostType
+    resolve -> (obj, args, ctx) {
+      PresignedPost.new
+    }
+  end
 end

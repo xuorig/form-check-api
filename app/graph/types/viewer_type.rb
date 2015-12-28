@@ -13,7 +13,7 @@ ViewerType = GraphQL::ObjectType.define do
 
   connection :formchecks, FormCheckType.connection_type do
     resolve -> (obj, args, ctx) {
-      FormCheck.all
+      FormCheck.all.order(created_at: :desc)
     }
   end
 

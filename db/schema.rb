@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221170316) do
+ActiveRecord::Schema.define(version: 20151228232034) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
@@ -22,13 +22,33 @@ ActiveRecord::Schema.define(version: 20151221170316) do
   end
 
   create_table "form_checks", force: :cascade do |t|
-    t.string   "title",       limit: 255
+    t.string   "title",         limit: 255
+    t.integer  "sport_id",      limit: 4
+    t.text     "description",   limit: 65535
+    t.string   "video_url",     limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "user_id",       limit: 4
+    t.string   "thumbnail_url", limit: 255
+  end
+
+  create_table "team_memberships", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "team_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "team_memberships", ["team_id"], name: "index_team_memberships_on_team_id", using: :btree
+  add_index "team_memberships", ["user_id", "team_id"], name: "index_team_memberships_on_user_id_and_team_id", unique: true, using: :btree
+  add_index "team_memberships", ["user_id"], name: "index_team_memberships_on_user_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.integer  "sport_id",    limit: 4
-    t.text     "description", limit: 65535
-    t.integer  "video_url",   limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "user_id",     limit: 4
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,8 +1,8 @@
-FormCheckType = GraphQL::ObjectType.define do
-  name "FormCheck"
+TeamType = GraphQL::ObjectType.define do
+  name "Team"
   interfaces [NodeIdentification.interface]
   global_id_field :id
-  description "A Form Check"
+  description "A Team"
 
   field :rails_id do
     type !types.Int
@@ -11,15 +11,12 @@ FormCheckType = GraphQL::ObjectType.define do
 
   field :created_at, types.String
 
-  field :title, types.String
+  field :name, types.String
   field :description, types.String
-  field :video_url, types.String
 
-  connection :comments, CommentType.connection_type do
+  connection :members, UserType.connection_type do
     resolve -> (obj, args, ctx) {
-      obj.comments
+      obj.members
     }
   end
-
-  field :user, UserType
 end

@@ -7,8 +7,14 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :form_checks
 
+  has_many :team_memberships, class_name:  "TeamMembership",
+                         foreign_key: "user_id",
+                         dependent:   :destroy
+  has_many :memberships, through: :team_memberships, source: :team
+
+
   after_create :update_access_token!
-  
+
   def update_access_token!
     # Change that to something more secure (id)
     self.access_token = "#{self.id}:#{Devise.friendly_token}"
