@@ -10,7 +10,6 @@ AddFormCheckMutation = GraphQL::Relay::Mutation.define do
   return_field :rails_id, types.Int
 
   resolve -> (args, ctx) {
-    byebug
     fc = FormCheck.create(
       title: args[:title],
       description: args[:description],
@@ -18,6 +17,9 @@ AddFormCheckMutation = GraphQL::Relay::Mutation.define do
       sport_id: args[:sportId],
       user_id: ctx[:current_user].id
     )
+
+    # Queue a job to get a thumbnail!
+    ScreenshotJob.perform_later fc.id
     return {rails_id: fc.id}
   }
 end
