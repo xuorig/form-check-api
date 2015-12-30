@@ -1,5 +1,7 @@
 NodeIdentification = GraphQL::Relay::GlobalNodeIdentification.define do
-  object_from_id -> (id) do
+  # Given a UUID & the query context,
+  # return the corresponding application object
+  object_from_id -> (id, ctx) do
     type_name, id = NodeIdentification.from_global_id(id)
     return Viewer.new if type_name == 'Viewer'
     return PresignedPost.new if type_name == 'PresignedPost'
@@ -8,7 +10,9 @@ NodeIdentification = GraphQL::Relay::GlobalNodeIdentification.define do
     type_name.constantize.find(id)
   end
 
+  # Given an application object,
+  # return a GraphQL ObjectType to expose that object
   type_from_object -> (object) do
-    InsytoSchema.types[object.class.name]
+    FormCheckSchema.types[object.class.name]
   end
 end

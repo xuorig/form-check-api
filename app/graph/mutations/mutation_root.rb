@@ -4,4 +4,5 @@ MutationRoot = GraphQL::ObjectType.define do
   field :signup, field: SignUpMutation.field
   field :signin, field: SignInMutation.field
   field :addFormCheck, field: AddFormCheckMutation.field
+  field :addComment, field: AddCommentMutation.field
 end
