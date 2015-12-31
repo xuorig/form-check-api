@@ -1,0 +1,27 @@
+---
+- id: 1
+  name: Weightlifting
+
+- id: 2
+  name: Crossfit
+
+- id: 3
+  name: Powerlifting
+
+- id: 4
+  name: Football
+
+- id: 5
+  name: Hockey
+
+- id: 6
+  name: Basketball
+
+- id: 7
+  name: Soccer
+
+- id: 8
+  name: Bodybuilding
+
+- id: 9
+  name: Baseball

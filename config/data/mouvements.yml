@@ -1,0 +1,27 @@
+---
+- id: 1
+  name: Snatch
+
+- id: 2
+  name: Clean & Jerk
+
+- id: 3
+  name: Back Squat
+
+- id: 4
+  name: Deadlift
+
+- id: 5
+  name: Clean
+
+- id: 6
+  name: Jerk
+
+- id: 7
+  name: Front Squat
+
+- id: 8
+  name: Snatch Pull
+
+- id: 9
+  name: Clean Pull

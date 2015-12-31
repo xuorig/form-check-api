@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 gem 'mysql2', '~> 0.3.13'
@@ -13,7 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Puma as the app server
 gem 'puma'
 
-# Use colors
+# Use cors
 gem 'rack-cors', :require => 'rack/cors'
 
 # Users
@@ -30,6 +29,9 @@ gem 'aws-sdk', '~> 2'
 # Screenshot Taking
 gem 'streamio-ffmpeg'
 gem 'sidekiq'
+
+# Model from YAML
+gem 'frozen-record'
 
 group :development, :test do
   gem 'byebug'

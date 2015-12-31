@@ -4,6 +4,7 @@ class CreateBaseVisibilities < ActiveRecord::Migration
       t.string :type
       t.string :name
       t.belongs_to :form_check
+      t.belongs_to :team
       t.timestamps null: false
     end
   end
