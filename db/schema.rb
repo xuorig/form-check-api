@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228232034) do
+ActiveRecord::Schema.define(version: 20151231042720) do
+
+  create_table "base_visibilities", force: :cascade do |t|
+    t.string   "type",          limit: 255
+    t.string   "name",          limit: 255
+    t.integer  "form_check_id", limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
@@ -31,6 +39,16 @@ ActiveRecord::Schema.define(version: 20151228232034) do
     t.integer  "user_id",       limit: 4
     t.string   "thumbnail_url", limit: 255
   end
+
+  create_table "team_form_check_visibilities", force: :cascade do |t|
+    t.integer  "team_id",            limit: 4
+    t.integer  "base_visibility_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "team_form_check_visibilities", ["base_visibility_id"], name: "index_team_form_check_visibilities_on_base_visibility_id", using: :btree
+  add_index "team_form_check_visibilities", ["team_id"], name: "index_team_form_check_visibilities_on_team_id", using: :btree
 
   create_table "team_memberships", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
