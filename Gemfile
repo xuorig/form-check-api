@@ -31,7 +31,10 @@ gem 'streamio-ffmpeg'
 gem 'sidekiq'
 
 # Model from YAML
-gem 'frozen-record'
+gem 'frozen_record'
+
+# Slugs
+gem 'friendly_id'
 
 group :development, :test do
   gem 'byebug'

@@ -60,6 +60,10 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
+    frozen_record (0.4.0)
+      activemodel
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     graphql (0.10.1)
@@ -158,6 +162,8 @@ DEPENDENCIES
   aws-sdk (~> 2)
   byebug
   devise
+  friendly_id
+  frozen_record
   graphql
   graphql-batch
   graphql-relay

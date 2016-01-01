@@ -10,6 +10,7 @@ FormCheckType = GraphQL::ObjectType.define do
   end
 
   field :created_at, types.String
+  field :slug, types.String
 
   field :title, types.String
   field :description, types.String

@@ -21,7 +21,7 @@ ViewerType = GraphQL::ObjectType.define do
     type FormCheckType
     argument :id, !types.String
     resolve -> (obj, args, ctx) {
-      FormCheck.find(args[:id])
+      FormCheck.friendly.find(args[:id])
     }
   end
 end
