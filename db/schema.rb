@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160101194524) do
+ActiveRecord::Schema.define(version: 20160101204707) do
 
   create_table "base_visibilities", force: :cascade do |t|
     t.string   "type",          limit: 255
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 20160101194524) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
   create_table "team_memberships", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "team_id",    limit: 4
@@ -96,4 +106,5 @@ ActiveRecord::Schema.define(version: 20160101194524) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "identities", "users"
 end

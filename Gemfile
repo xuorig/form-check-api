@@ -36,6 +36,12 @@ gem 'frozen_record'
 # Slugs
 gem 'friendly_id'
 
+# Facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+gem 'httparty'
+
 group :development, :test do
   gem 'byebug'
 end

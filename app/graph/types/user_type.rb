@@ -29,7 +29,7 @@ UserType = GraphQL::ObjectType.define do
   field :presigned_s3_post do
     type PresignedPostType
     resolve -> (obj, args, ctx) {
-      PresignedPost.new
+      PresignedPost.new(S3_BUCKET)
     }
   end
 end

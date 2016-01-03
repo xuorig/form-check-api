@@ -3,7 +3,9 @@ class PresignedPostFields
     @fields = fields
   end
 
+  # Relay always fetches id so we mock this method out
   def id
+    #NOOP
   end
 
   def key

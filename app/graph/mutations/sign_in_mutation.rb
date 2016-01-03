@@ -2,6 +2,8 @@ SignInMutation = GraphQL::Relay::Mutation.define do
   name "SignIn"
   input_field :email, !types.String
   input_field :password, !types.String
+  input_field :provider, types.String
+  input_field :uid, types.String
 
   return_field :access_token, types.String
 
