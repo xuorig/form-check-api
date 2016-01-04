@@ -43,7 +43,6 @@ module Omniauth
     def get_access_token(code)
       response = self.class.get('/oauth/access_token', query(code))
       # Something went wrong either wrong configuration or connection
-      byebug
       unless response.success?
         Rails.logger.error 'Omniauth::Facebook.get_access_token Failed'
         fail Omniauth::ResponseError, 'errors.auth.facebook.access_token'
@@ -53,7 +52,7 @@ module Omniauth
 
     def get_user_profile(access_token)
       options = { query: { access_token: access_token } }
-      response = self.class.get('/me', options)
+      response = self.class.get('/me?fields=id,name,email', options)
 
       # Something went wrong most propably beacuse of the connection.
       unless response.success?

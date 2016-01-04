@@ -21,10 +21,10 @@ class User < ActiveRecord::Base
     save
   end
 
-  def self.find_for_oauth(uid, provider)
+  def self.find_for_oauth(user_info, provider)
 
     # Get the identity and user if they exist
-    identity = Identity.find_for_oauth(uid, provider)
+    identity = Identity.find_or_create_for_oauth(user_info["id"], provider)
 
     # If a signed_in_resource is provided it always overrides the existing user
     # to prevent the identity being locked with accidentally created accounts.
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
     # Create the user if needed
     if identity.nil?
-      email = auth.info.email
+      email = user_info["email"]
       user = User.find_by(email: email) if email
 
       # Create the user if it's a new registration
